@@ -167,22 +167,12 @@
 <script>
 import "~/assets/css/sign.css";
 import "~/assets/css/iconfont.css";
-// import
-
-// import registerApi from "@/api/register";
 import { register/*, login*/ } from '../api/user'
 
 export default {
-    layout: "default-1",
+    layout: "type-1",
     data() {
         return {
-            // params: {
-            //     //封装注册输入数据
-            //     mobile: "",
-            //     code: "", //验证码
-            //     nickname: "",
-            //     password: "",
-            // },
             sending: true, //是否发送验证码
             second: 60, //倒计时间
             codeTest: "获取验证码",
@@ -195,7 +185,6 @@ export default {
         };
     },
     methods: {
-
         // 注册会员
         async register() {
             const result = await register(this.formData)
@@ -206,42 +195,7 @@ export default {
                 this.$message.success('注册失败')
             }
         },
-
-        // login() {},
-        //注册提交的方法
-        // submitRegister() {
-        //     registerApi.registerMember(this.params).then((response) => {
-        //         //提示注册成功
-        //         this.$message({
-        //             type: "success",
-        //             message: "注册成功",
-        //         });
-        //         //跳转登录页面
-        //         this.$router.push({ path: "/login" });
-        //     });
-        // },
-        // timeDown() {
-        //     let result = setInterval(() => {
-        //         --this.second;
-        //         this.codeTest = this.second;
-        //         if (this.second < 1) {
-        //             clearInterval(result);
-        //             this.sending = true;
-        //             //this.disabled = false;
-        //             this.second = 60;
-        //             this.codeTest = "获取验证码";
-        //         }
-        //     }, 1000);
-        // },
-        // //通过输入手机号发送验证码
-        // getCodeFun() {
-        //     registerApi.sendCode(this.params.mobile).then((response) => {
-        //         this.sending = false;
-        //         //调用倒计时的方法
-        //         this.timeDown();
-        //     });
-        // },
-
+        // 
         checkPhone(rule, value, callback) {
             //debugger
             if (!/^1[34578]\d{9}$/.test(value)) {
@@ -252,3 +206,9 @@ export default {
     },
 };
 </script>
+
+<style>
+.sign-up-container {
+    width: 40%;
+}
+</style>

@@ -7,3 +7,11 @@ export function getCourses() {
         method: 'get',
     })
 }
+
+// 获取课程详细信息
+export function getCourseById(courseId) {
+    return request({
+        url: `/cms/courses/${courseId}`,
+        method: 'get',
+    })
+}
