@@ -170,8 +170,10 @@
 import { getBanners } from '../api/banner'
 import { getCourses } from '../api/course'
 import { getTeachers } from '../api/teacher'
+import { tokenHelper } from '../mixins/token-helper'
 
 export default {
+    mixins: [tokenHelper],
     data() {
         return {
             swiperOption: {
@@ -198,9 +200,20 @@ export default {
     },
     methods: {
         init() {
+            this.jumpLogin()
             this.getBanners()
             this.getTeachers()
             this.getCourses()
+        },
+
+        // 处理跳转登录
+        jumpLogin() {
+            const { token = '', expiresTime = 0, expiresDays = 0 } = this.$route.query
+            if (token) {
+                this.saveTokenR({
+                    token, expiresTime: +expiresTime, expiresDays: +expiresDays
+                })
+            }
         },
 
         // 获取banner

@@ -43,6 +43,7 @@ service.interceptors.request.use(
                 cancel("请先登录获取token");
             }
         }
+        
         return config
     },
     error => {

@@ -12,7 +12,14 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    // script: [
+    //     {
+    //         type: 'text/script',
+    //         src: 'http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js',
+    //         async: true
+    //     }
+    // ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

@@ -88,11 +88,12 @@
 import "~/assets/css/sign.css";
 import "~/assets/css/iconfont.css";
 import { login, getUserInfo } from "../api/user";
-import { mapMutations } from 'vuex';
 import jsCookie from 'js-cookie'
+import { tokenHelper } from '../mixins/token-helper'
 
 export default {
     layout: "type-1",
+    mixins: [tokenHelper],
 
     data() {
         return {
@@ -105,7 +106,6 @@ export default {
     },
 
     methods: {
-        ...mapMutations(['saveUserInfo', 'saveTokenR']),
         async login() {
             const result = await login(this.formData);
             if (result.success) {
@@ -123,12 +123,6 @@ export default {
                 return callback(new Error("手机号码格式不正确"));
             }
             return callback();
-        },
-
-        saveTokenR(tokenR) {
-            const { token, expiresDays, expiresTime } = tokenR
-            jsCookie.set('token', token, { expires: expiresDays })
-            jsCookie.set('expiresTime', expiresTime)
         },
 
         // 获取用户信息
