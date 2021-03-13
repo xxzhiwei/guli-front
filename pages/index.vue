@@ -39,8 +39,9 @@
                             <ul class="of" id="bna">
                                 <li v-for="course in hotCourses" :key="course.id">
                                     <div class="cc-l-wrap">
-                                        <section class="course-img">
+                                        <section class="course-img" style="height: 140px;">
                                             <img
+                                                style="height: 100%;"
                                                 :src="course.cover"
                                                 class="img-responsive"
                                                 :alt="course.title"
@@ -226,7 +227,7 @@ export default {
 
         // 获取热门课程
         async getCourses() {
-            const result = await getCourses()
+            const result = await getCourses({ type: 'HOT' })
             if (result.success) {
                 this.hotCourses = result.data.records
             }
@@ -234,7 +235,7 @@ export default {
 
         // 获取热门讲师
         async getTeachers() {
-            const result = await getTeachers()
+            const result = await getTeachers({ type: 'FAMOUS' })
             if (result.success) {
                 this.hotTeachers = result.data.records
             }

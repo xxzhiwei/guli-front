@@ -1,13 +1,14 @@
 import request from '../util/request'
 
 // 获取课程
-export function getCourses() {
+export function getCourses(params) {
     return request({
         url: `/edu/courses/`,
         method: 'get',
         headers: {
             noToken: true
-        }
+        },
+        params
     })
 }
 

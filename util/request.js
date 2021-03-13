@@ -25,24 +25,25 @@ service.interceptors.request.use(
         //     // please modify it according to the actual situation
         //     config.headers['X-Token'] = getToken()
         // }
-        const expiresTime = jsCookie.get('expiresTime')
-        const current = new Date().getTime()
+        // const token = jsCookie.get('token')
         
-        if (expiresTime) {
-            if (current > +expiresTime) {
-                cancel("token已过期，请重新登录");
-            }
-        }
+        // if (token) {
+        //     const expiresTime = jsCookie.get('expiresTime')
+        //     const current = new Date().getTime()
+        //     if (current > +expiresTime) {
+        //         cancel("token已过期，请重新登录");
+        //     }
+        // }
 
-        if (!config.headers.noToken) {
-            const token = jsCookie.get('token')
-            if (token) {
-                config.headers['Authorization'] = `Bearer ${token}`
-            }
-            else {
-                cancel("请先登录获取token");
-            }
-        }
+        // if (!config.headers.noToken) {
+        //     const token = jsCookie.get('token')
+        //     if (token) {
+        //         config.headers['Authorization'] = `Bearer ${token}`
+        //     }
+        //     else {
+        //         cancel("请先登录获取token");
+        //     }
+        // }
         
         return config
     },

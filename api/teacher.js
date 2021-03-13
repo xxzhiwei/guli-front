@@ -1,9 +1,19 @@
 import request from '../util/request'
 
-// 获取热门讲师
-export function getTeachers() {
+export function getTeachers(params) {
     return request({
         url: `/edu/teachers/`,
+        method: 'get',
+        headers: {
+            noToken: true
+        },
+        params
+    })
+}
+
+export function getTeacherById(id) {
+    return request({
+        url: `/edu/teachers/${id}`,
         method: 'get',
         headers: {
             noToken: true

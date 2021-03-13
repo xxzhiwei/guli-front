@@ -21,7 +21,7 @@ export default {
         },
         async getCourseById(courseId) {
             const result = await getCourseById(courseId)
-            if (result.isSuccess) {
+            if (result.success) {
                 this.record = result.record
             }
         }
